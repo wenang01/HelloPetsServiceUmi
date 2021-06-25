@@ -55,8 +55,8 @@ public class CartsController {
 	  }
 	
 	@GetMapping("u/{userId}")
-	public ResponseEntity<Carts> getCartsByUserId(@PathVariable("userId") Long userId) {
-	    Optional<Carts> cartsData = cartsRepository.findByUserId(userId);
+	public ResponseEntity<Carts> getCartsByUserId(@PathVariable("userId") String userId) {
+	    Optional<Carts> cartsData = cartsRepository.findByUserId(Long.parseLong(userId));
 
 	    if (cartsData.isPresent()) {
 	      return new ResponseEntity<>(cartsData.get(), HttpStatus.OK);
